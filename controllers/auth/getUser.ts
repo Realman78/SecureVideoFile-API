@@ -10,7 +10,7 @@ const getUser = async (req: Request<{}, {}, {}, {}>, res: Response) => {
         return res.status(404).send({msg: "User not found."})
     }
 
-    return {userDetails: user}
+    return res.send({userDetails: user})
 }
 
 export default getUser

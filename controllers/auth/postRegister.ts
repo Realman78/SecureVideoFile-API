@@ -33,7 +33,7 @@ const postRegister = async (req: Request<{}, {}, { username: string, password: s
         const confirmationCode: string = jwt.sign({ mail, timestamp }, process.env.TOKEN_KEY as string)
 
         const userBody: UserBody = {
-            username, password: encryptedPassword, mail: mail.toLowerCase(), confirmationCode, confirmationCodeExpiresAt: moment().add(1, 'day').toDate()
+            username, password: encryptedPassword, mail: mail.toLowerCase(), confirmationCode, confirmationCodeExpiresAt: moment().add(1, 'hour').toDate()
         }
 
         const user: IUser | null = await User.create(userBody)
