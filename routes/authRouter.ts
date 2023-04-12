@@ -1,9 +1,7 @@
 import express from 'express'
 const router = express.Router()
 
-import _Joi from 'joi'
-import JoiDate from '@joi/date'
-const Joi: any = _Joi.extend(JoiDate)
+import Joi from 'joi'
 
 import ejv from 'express-joi-validation'
 const validator = ejv.createValidator({})

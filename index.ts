@@ -18,8 +18,10 @@ app.get('/test', (req, res) => {
 });
 
 import authRoutes from './routes/authRouter';
+import fileRoutes from './routes/fileRouter';
 
 app.use('/api/auth', authRoutes)
+app.use('/api/file', fileRoutes)
 
 connectDB()
   .then(() => {
