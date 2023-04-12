@@ -8,7 +8,7 @@ const Joi: any = _Joi.extend(JoiDate)
 import ejv from 'express-joi-validation'
 const validator = ejv.createValidator({})
 
-import { postRegister, errorHandler, postLogin, getUser, verifyUser} from '../controllers/auth/authController'
+import { postRegister, errorHandler, postLogin, getUser, verifyUser, resendConfirmationMail, resetPassword } from '../controllers/auth/authController'
 import { protect } from '../middleware/authMiddleware'
 
 const registerSchema = Joi.object({
@@ -25,8 +25,8 @@ router.get('/get/me', protect, getUser)
 router.post('/register', validator.body(registerSchema), postRegister)
 router.post('/login', validator.body(loginSchema), postLogin)
 router.get('/confirm/:code', verifyUser)
-// router.get('/confirm/resend/:id', resendConfirmationMail)
-// router.patch('/reset', protect, resetPassword)
+router.get('/confirm/resend/:id', resendConfirmationMail)
+router.patch('/reset', protect, resetPassword)
 
 
 router.use('/*', errorHandler)
