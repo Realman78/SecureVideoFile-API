@@ -6,17 +6,24 @@ import Joi from 'joi'
 import ejv from 'express-joi-validation'
 const validator = ejv.createValidator({})
 
-import { errorHandler } from '../controllers/file/fileController'
-// import { protect } from '../middleware/authMiddleware'
+import { errorHandler, createFile, fetchFile, deleteFile, updateFile } from '../controllers/file/fileController'
+import { protect } from '../middleware/authMiddleware'
 
 const uploadSchema = Joi.object({
-    username: Joi.string().min(3).max(24).required(),
-    password: Joi.string().min(8).max(48).required(),
-    mail: Joi.string().email().required(),
+    name: Joi.string().min(1).required(),
+    url: Joi.string().min(1).required(),
+})
+const fetchSchema = Joi.object({
+    identifier: Joi.string().min(1).required(),
+})
+const updateSchema = Joi.object({
+    name: Joi.string().min(1).required(),
 })
 
-// router.get('/get/me', protect, getUser)
-
+router.post('/create', validator.body(uploadSchema), protect, createFile)
+router.post('/fetch', validator.body(fetchSchema), protect, fetchFile)
+router.patch('/update/:id', validator.body(updateSchema), protect, updateFile)
+router.delete('/delete/:id', protect, deleteFile);
 
 router.use('/*', errorHandler)
 // router.post('/*', errorHandler)
