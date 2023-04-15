@@ -43,6 +43,7 @@ const postRegister = async (req: Request<{}, {}, { username: string, password: s
         const token = jwt.sign({
             userId: user._id,
             mail,
+            username,
             status: user.status
         }, process.env.TOKEN_KEY as string, { expiresIn: '30d' })
 

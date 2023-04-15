@@ -14,7 +14,7 @@ const createFile = async (req: Request<{},{},{identifier: string},{}>, res: Resp
             return res.status(404).send({msg: "File(s) with that identifier not found."})
         }
 
-        res.status(201).send({message: 'File(s) fetched.', file: files})
+        res.status(200).send({message: 'File(s) fetched.', file: files})
     } catch (e: any) {
         console.log(e)
         return res.status(500).send({ message: "Error occured. Please try again.", error: e.message })

@@ -3,6 +3,7 @@ import { JwtPayload } from "jsonwebtoken";
 type decodedUser = {
     userId: string,
     mail: string,
+    username: string,
     role: string,
     status: string
 }
