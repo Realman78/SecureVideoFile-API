@@ -16,7 +16,7 @@ const UserSchema = new Schema<IUser>({
   status: { type: String, required: true, enum: ['Pending', 'Active'], default: 'Pending' },
   confirmationCode: { type: String, required: true },
   confirmationCodeExpiresAt: {type: Date, required: true}
-})
+}, { timestamps: true })
 
 const User: Model<IUser> = model("User", UserSchema)
 export default User
