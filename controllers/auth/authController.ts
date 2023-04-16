@@ -6,7 +6,8 @@ import verifyUser from './verifyUser'
 import resendConfirmationMail from './resendConfirmationMail'
 import updateUser from './updateUser'
 import resetPassword from './resetPassword'
+import deleteUser from './deleteUser'
 
 export {
-    postRegister, errorHandler, getUser, postLogin, verifyUser, resendConfirmationMail, updateUser, resetPassword
+    postRegister, errorHandler, getUser, postLogin, verifyUser, resendConfirmationMail, updateUser, resetPassword, deleteUser
 }
