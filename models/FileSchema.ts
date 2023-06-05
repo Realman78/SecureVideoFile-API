@@ -12,7 +12,7 @@ const FileSchema = new Schema<IFile>({
   url: { type: String, required: true },
   accessCode: { type: String, required: true },
   owner: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-})
+}, { timestamps: true })
 
 const File: Model<IFile> = model("File", FileSchema)
 export default File
