@@ -52,6 +52,7 @@ const postRegister = async (req: Request<{}, {}, { username: string, password: s
                 mail: user.mail,
                 token,
                 username: user.username,
+                status: user.status,
                 _id: user._id
             },
         })

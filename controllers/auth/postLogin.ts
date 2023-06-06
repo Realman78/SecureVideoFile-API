@@ -23,6 +23,7 @@ const postLogin = async (req: Request<{}, {}, { password: string, mail: string }
                     mail: user.mail,
                     token,
                     username: user.username,
+                    status: user.status,
                     _id: user._id
                 },
             })
